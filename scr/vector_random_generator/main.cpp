@@ -2,24 +2,6 @@
 
 #include <vector_random_generator/vector_random_generator.hpp>
 
-
-//    std::vector<std::uint16_t> vector;
-//    std::vector<std::uint32_t> vector;
-//    std::vector<std::int64_t> vector;
-
-//    std::vector<std::int8_t> vector;
-//    std::vector<std::int16_t> vector;
-//    std::vector<std::int32_t> vector;
-//    std::vector<std::int64_t> vector;
-
-//    std::vector<std::string> vector;
-
-//    std::vector<float> vector;
-//    std::vector<double> vector;
-
-//    std::vector<xt::dec8_t> vector;
-//    std::vector<xt::udec8_t> vector;
-
 template<typename Type>
 void vector_type (std::uint64_t length = 200) {
 
@@ -52,7 +34,7 @@ int main(int argc, char* argv[]) {
     if(argc == 1) {
         std::cout << "run" << std::endl;
 
-        vector_type<std::int8_t>();
+        vector_type<float>();
     }
 
     else if(argc == 2){
@@ -79,4 +61,21 @@ int main(int argc, char* argv[]) {
             vector_type<float>(length);
         }
     }
+
+    return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

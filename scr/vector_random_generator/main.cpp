@@ -4,6 +4,7 @@
 #include <vector_random_generator/vector_random_generator.hpp>
 
 
+
 template<typename Type>
 void vector_type (std::uint64_t length = 200) {
 
@@ -77,6 +78,7 @@ int main(int argc, char* argv[]) {
         vector_type<std::uint16_t>();
     }
 
+
     else if(argc == 2){
         std::cout << "run..." << std::endl;
 
@@ -84,6 +86,7 @@ int main(int argc, char* argv[]) {
 
         vector_type<std::uint16_t>(length);
     }
+
 
     else if(argc == 3){
         std::cout << "ruuuuuuuuuuuuuuuun..." << std::endl;
@@ -126,4 +129,20 @@ int main(int argc, char* argv[]) {
         }
     }
 
+    return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

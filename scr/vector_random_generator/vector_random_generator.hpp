@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <concepts>
 
 // Максимальная длинна строки
 #define MAX_LENGTH_STRING   32
@@ -27,15 +28,19 @@
  * @param rd_		random device
  */
 template<typename Type>
-inline void set_random(Type &value_, std::random_device &rd_) {
+concept integer_type = std::integral<Type>;
+
+
+template <integer_type I>
+inline void set_random(I& value_, std::random_device &rd_) {
     // Получим минимальное значение для этого типа
-    Type min = std::numeric_limits<Type>::min();
+    I min = std::numeric_limits<I>::min();
     // Получим максимальное значение для этого типа
-    Type max = std::numeric_limits<Type>::max();
+    I max = std::numeric_limits<I>::max();
     // Создадим ограничитель для произволього значения
-    std::uniform_int_distribution<Type> dist(min, max);
+    std::uniform_int_distribution<I> dist(min, max);
     // получим произвольное значение
-    value_ = static_cast<Type>(dist(rd_));
+    value_ = static_cast<I>(dist(rd_));
 }
 
 
@@ -61,8 +66,11 @@ inline void set_random<bool>(bool &value_, std::random_device &rd_) {
  * @param value_	Значение переменной.
  * @param rd_		random device
  */
-template<>
-inline void set_random<std::string>(std::string &value_, std::random_device &rd_) {
+template<typename Type>
+concept string_type = std::same_as<Type, std::string>;
+
+template<string_type S>
+inline void set_random(S &value_, std::random_device &rd_) {
     std::uint32_t length;
     set_random<std::uint32_t>(length, rd_);
     length = length % MAX_LENGTH_STRING;
@@ -83,7 +91,10 @@ inline void set_random<std::string>(std::string &value_, std::random_device &rd_
  * @param rd_		random device
  */
 template<typename Type>
-inline void set_random_f(Type &value_, std::random_device &rd_) {
+concept float_type = std::floating_point<Type>;
+
+template<float_type F>
+inline void set_random(F &value_, std::random_device &rd_) {
     std::uint16_t tmp_1;
     std::uint8_t tmp_2 = 0;
 
@@ -92,32 +103,32 @@ inline void set_random_f(Type &value_, std::random_device &rd_) {
     while (tmp_2 == 0)
         set_random<std::uint8_t>(tmp_2, rd_);
 
-    value_ = (static_cast<Type>(tmp_1) / static_cast<Type>(tmp_2));
+    value_ = static_cast<F>(tmp_1) / static_cast<F>(tmp_2);
 }
 
 
-/**
- * @brief	Устанавливает произвольное значение (для float типа)
- *
- * @param value_	Значение переменной.
- * @param rd_		random device
- */
-template<>
-inline void set_random<float>(float &value_, std::random_device &rd_) {
-    set_random_f<float>(value_, rd_);
-}
+///**
+// * @brief	Устанавливает произвольное значение (для float типа)
+// *
+// * @param value_	Значение переменной.
+// * @param rd_		random device
+// */
+//template<>
+//inline void set_random<float>(float &value_, std::random_device &rd_) {
+//    set_random_f<float>(value_, rd_);
+//}
 
 
-/**
- * @brief	Устанавливает произвольное значение (для double типа)
- *
- * @param value_	Значение переменной.
- * @param rd_		random device
- */
-template<>
-inline void set_random<double>(double& value_, std::random_device& rd_) {
-    set_random_f<double>(value_, rd_);
-}
+///**
+// * @brief	Устанавливает произвольное значение (для double типа)
+// *
+// * @param value_	Значение переменной.
+// * @param rd_		random device
+// */
+//template<>
+//inline void set_random<double>(double& value_, std::random_device& rd_) {
+//    set_random_f<double>(value_, rd_);
+//}
 
 
 

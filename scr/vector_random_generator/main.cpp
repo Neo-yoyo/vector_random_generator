@@ -135,7 +135,11 @@ int main(int argc, char* argv[]) {
 
 /// пример
 
+<<<<<<< HEAD
 
+=======
+/// amend
+>>>>>>> 89be182 (amend)
 
 
 

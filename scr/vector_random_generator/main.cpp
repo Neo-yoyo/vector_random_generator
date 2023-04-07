@@ -136,10 +136,20 @@ int main(int argc, char* argv[]) {
 /// пример
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fb9db57 (amend 2)
 
 =======
 /// amend
 >>>>>>> 89be182 (amend)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6d77136 (amend)
+=======
+>>>>>>> fb9db57 (amend 2)
 
 
 

@@ -4,3 +4,5 @@
 update system
 
 ssh test
+
+clion ssh test

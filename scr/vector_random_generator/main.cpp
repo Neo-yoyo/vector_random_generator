@@ -72,6 +72,8 @@ void vector_type (std::uint64_t length = 200) {
 
 int main(int argc, char* argv[]) {
 
+    std::cout << "Hello, WSL!" << std::endl;
+
     if(argc == 1) {
         std::cout << "run" << std::endl;
 
